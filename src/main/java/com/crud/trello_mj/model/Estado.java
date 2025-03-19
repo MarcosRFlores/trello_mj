@@ -3,15 +3,15 @@ package com.crud.trello_mj.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "rol")
-public class Rol {
+@Table(name = "Estado")
+public class Estado {
 
-    //El id del rol es autogenerado
+    //El id del estado es autogenerado
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //El nombre del rol no puede ser nulo y debe ser único
+    //El nombre del estado no puede ser nulo y debe ser único
     @Column(name = "nombre", nullable = false, unique = true)
     private String nombre;
 
