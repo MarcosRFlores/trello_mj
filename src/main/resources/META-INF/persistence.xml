@@ -2,8 +2,8 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
     <persistence-unit name="jsf-crud-unit" transaction-type="JTA">
         <jta-data-source>java:/PostgresDS</jta-data-source>
-        <class>com.crud.trello_mj.model.Estado</class>
-        <class>com.crud.trello_mj.model.Usuario</class>
+        <class>com.crud.trello_mj.estado.Estado</class>
+        <class>com.crud.trello_mj.usuario.Usuario</class>
 
 
         <properties>
