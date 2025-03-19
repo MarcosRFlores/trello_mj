@@ -1,4 +1,4 @@
-package com.crud.trello_mj.model;
+package com.crud.trello_mj.estado;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
