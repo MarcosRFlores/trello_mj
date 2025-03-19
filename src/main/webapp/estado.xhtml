@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Gestión de Estados</title>
+</h:head>
+
+<h:body>
+    <h:form id="estadoForm">
+        <h2>Gestión de Estados</h2>
+
+        <h:panelGrid columns="2">
+            <h:outputLabel for="nombre" value="Nombre:"/>
+            <h:inputText id="nombre" value="#{estadoBean.estado.nombre}" required="true"/>
+
+            <h:commandButton value="Guardar" action="#{estadoBean.guardar}" update=":estadoForm"/>
+        </h:panelGrid>
+
+        <h2>Lista de Estados</h2>
+        <p:dataTable value="#{estadoBean.estados}" var="est">
+            <p:column headerText="ID">
+                <h:outputText value="#{est.id}"/>
+            </p:column>
+            <p:column headerText="Nombre">
+                <h:outputText value="#{est.nombre}"/>
+            </p:column>
+            <p:column headerText="Acciones">
+                <h:commandButton value="Editar" action="#{estadoBean.cargarEstado(est.id)}" process="@this" update="estadoForm" />
+                <h:commandButton value="Eliminar" action="#{estadoBean.eliminar(est.id)}" process="@this" update="estadoForm"/>
+            </p:column>
+        </p:dataTable>
+    </h:form>
+</h:body>
+</html>

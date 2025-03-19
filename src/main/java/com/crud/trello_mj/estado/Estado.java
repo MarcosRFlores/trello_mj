@@ -1,10 +1,15 @@
 package com.crud.trello_mj.estado;
 
+import lombok.*;
+
 import javax.persistence.Entity;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "estado")
+@Data // Genera automáticamente los getters, setters, toString, equals, y hashCode
+@NoArgsConstructor // Constructor sin parámetros
+@AllArgsConstructor // Constructor con todos los parámetros
 public class Estado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,29 +17,4 @@ public class Estado {
 
     @Column(name = "nombre", nullable = false, length = 15)
     private String nombre;
-
-    // Getters y Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    @Override
-    public String toString() {
-        return "Estado{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                '}';
-    }
 }
