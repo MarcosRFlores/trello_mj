@@ -16,11 +16,11 @@ public class Usuario {
     @Column(name = "contrasena", nullable = false, length = 100)
     private String contrasena;
 
-    //Definimos la relación que Usuario tiene con Rol, siendo que muchos usuarios pueden tener un mismo rol
-    //pero un usuario solo puede tener un rol.
+    //Definimos la relación que Usuario tiene con estado, siendo que muchos usuarios pueden tener un mismo estado
+    //pero un usuario solo puede tener un estado.
     @ManyToOne
-    @JoinColumn(name = "rol_id", nullable = false)
-    private Rol rol;
+    @JoinColumn(name = "esatdo_id", nullable = false)
+    private Estado estado;
 
     //Getters y Setters
     public long getId() {
@@ -47,11 +47,11 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
-    public Rol getRol() {
-        return rol;
+    public Estado getEstado() {
+        return estado;
     }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 }
