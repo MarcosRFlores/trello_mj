@@ -1,4 +1,7 @@
-package com.crud.trello_mj.model;
+package com.crud.trello_mj.tarea;
+
+import com.crud.trello_mj.estado.Estado;
+import com.crud.trello_mj.usuario.Usuario;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
