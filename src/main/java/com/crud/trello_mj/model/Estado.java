@@ -1,26 +1,24 @@
 package com.crud.trello_mj.model;
 
+import javax.persistence.Entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Estado")
+@Table(name = "estado")
 public class Estado {
-
-    //El id del estado es autogenerado
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-    //El nombre del estado no puede ser nulo y debe ser único
-    @Column(name = "nombre", nullable = false, unique = true)
+    @Column(name = "nombre", nullable = false, length = 15)
     private String nombre;
 
-    //Getters y Setter
-    public Long getId() {
+    // Getters y Setters
+    public long getId() {
         return id;
     }
 
-    public void setId( Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -30,5 +28,13 @@ public class Estado {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    @Override
+    public String toString() {
+        return "Estado{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                '}';
     }
 }

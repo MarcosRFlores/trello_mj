@@ -7,22 +7,19 @@ import javax.persistence.*;
 @Table(name = "usuario")
 public class Usuario {
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "nombre", nullable = false, unique = true)
+    @Column(name = "nombre", nullable = false, length = 100, unique = true)
     private String nombre;
 
-    @Column(name = "contrasena", nullable = false, length = 100)
+    @Column(name = "email", nullable = false, length = 100, unique = true)
+    private String email;
+
+    @Column(name = "contrasena", nullable = false, length = 40)
     private String contrasena;
 
-    //Definimos la relación que Usuario tiene con estado, siendo que muchos usuarios pueden tener un mismo estado
-    //pero un usuario solo puede tener un estado.
-    @ManyToOne
-    @JoinColumn(name = "esatdo_id", nullable = false)
-    private Estado estado;
-
-    //Getters y Setters
+    // Getters y Setters
     public long getId() {
         return id;
     }
@@ -39,6 +36,14 @@ public class Usuario {
         this.nombre = nombre;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getContrasena() {
         return contrasena;
     }
@@ -47,11 +52,12 @@ public class Usuario {
         this.contrasena = contrasena;
     }
 
-    public Estado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Estado estado) {
-        this.estado = estado;
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
