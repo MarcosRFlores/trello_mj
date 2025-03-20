@@ -11,15 +11,15 @@ public class Usuario implements Serializable { // Implementar Serializable
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    @Column(name = "nombre", nullable = false, length = 100, unique = true)
+    @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
 
     @Column(name = "email", nullable = false, length = 100, unique = true)
     private String email;
 
-    @Column(name = "contrasena", nullable = false, length = 40)
+    @Column(name = "contrasena", nullable = false, length = 100)
     private String contrasena;
 
     // Getters y Setters
@@ -27,7 +27,7 @@ public class Usuario implements Serializable { // Implementar Serializable
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

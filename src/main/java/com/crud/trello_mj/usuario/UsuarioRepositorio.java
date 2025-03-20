@@ -27,7 +27,7 @@ public class UsuarioRepositorio {
     }
 
     // Buscar un usuario por su ID
-    public Usuario buscarPorId(long id) {
+    public Usuario buscarPorId(Long id) {
         return em.find(Usuario.class, id);
     }
 

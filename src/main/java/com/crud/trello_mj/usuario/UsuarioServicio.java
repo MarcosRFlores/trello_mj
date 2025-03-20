@@ -1,16 +1,24 @@
 package com.crud.trello_mj.usuario;
 
 import com.crud.trello_mj.util.PasswordUtil;
+import com.crud.trello_mj.exception.UsuarioExistenteException;
+
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.util.List;
 
+@ApplicationScoped
 public class UsuarioServicio {
 
     @Inject
     private UsuarioRepositorio usuarioRepositorio;
 
     // Registrar un nuevo usuario
-    public void registrarUsuario(Usuario usuario) {
+    public void registrarUsuario(Usuario usuario) throws UsuarioExistenteException {
+        Usuario usuarioExistente = usuarioRepositorio.buscarPorEmail(usuario.getEmail());
+        if (usuarioExistente != null) {
+            throw new UsuarioExistenteException("El email ya está registrado");
+        }
         // Encriptar la contraseña antes de guardarla
         String encryptedPassword = PasswordUtil.encryptPassword(usuario.getContrasena());
         usuario.setContrasena(encryptedPassword);
@@ -32,7 +40,7 @@ public class UsuarioServicio {
     }
 
     // Buscar un usuario por su ID
-    public Usuario buscarPorId(long id) {
+    public Usuario buscarPorId(Long id) {
         return usuarioRepositorio.buscarPorId(id);
     }
 
