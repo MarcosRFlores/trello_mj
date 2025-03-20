@@ -3,9 +3,13 @@ package com.crud.trello_mj.usuario;
 import javax.persistence.Entity;
 import javax.persistence.*;
 import java.io.Serializable;
+import lombok.*;
 
 @Entity
 @Table(name = "usuario")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Usuario implements Serializable { // Implementar Serializable
     private static final long serialVersionUID = 1L; // Agregar serialVersionUID
 
@@ -21,39 +25,6 @@ public class Usuario implements Serializable { // Implementar Serializable
 
     @Column(name = "contrasena", nullable = false, length = 40)
     private String contrasena;
-
-    // Getters y Setters
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
 
     @Override
     public String toString() {

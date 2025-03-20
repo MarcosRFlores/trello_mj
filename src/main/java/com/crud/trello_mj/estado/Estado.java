@@ -7,9 +7,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "estado")
-@Data // Genera automáticamente los getters, setters, toString, equals, y hashCode
-@NoArgsConstructor // Constructor sin parámetros
-@AllArgsConstructor // Constructor con todos los parámetros
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Estado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
