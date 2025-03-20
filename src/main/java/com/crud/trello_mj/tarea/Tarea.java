@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class Tarea {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "titulo", nullable = false, length = 100)
     private String titulo;
