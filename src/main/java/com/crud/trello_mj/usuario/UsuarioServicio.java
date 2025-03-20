@@ -1,9 +1,14 @@
 package com.crud.trello_mj.usuario;
 
 import com.crud.trello_mj.util.PasswordUtil;
+
+import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.List;
 
+@Stateless
 public class UsuarioServicio {
 
     @Inject

@@ -1,9 +1,9 @@
 package com.crud.trello_mj.estado;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
-import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,7 +16,7 @@ public class EstadoBean implements Serializable {
     private Estado estado;
     private List<Estado> estados;
 
-    @EJB
+    @Inject
     private EstadoServicio estadoServicio;
 
     @PostConstruct

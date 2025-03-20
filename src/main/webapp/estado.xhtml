@@ -8,14 +8,14 @@
 </h:head>
 
 <h:body>
-    <h:form id="estadoForm">
+    <h:form id="estadoForm" prependId="false">
         <h2>Gestión de Estados</h2>
 
         <h:panelGrid columns="2">
             <h:outputLabel for="nombre" value="Nombre:"/>
             <h:inputText id="nombre" value="#{estadoBean.estado.nombre}" required="true"/>
 
-            <h:commandButton value="Guardar" action="#{estadoBean.guardar}" update=":estadoForm" process="@this"/>
+            <p:commandButton value="Guardar" action="#{estadoBean.guardar}" update="@form"/>
         </h:panelGrid>
 
         <h2>Lista de Estados</h2>
@@ -27,8 +27,8 @@
                 <h:outputText value="#{est.nombre}"/>
             </p:column>
             <p:column headerText="Acciones">
-                <h:commandButton value="Editar" action="#{estadoBean.cargarEstado(est.id)}" process="@this" update="@form" />
-                <h:commandButton value="Eliminar" action="#{estadoBean.eliminar(est.id)}" process="@this" update=":estadoForm"/>
+                <p:commandButton value="Editar" action="#{estadoBean.cargarEstado(est.id)}" update=":estadoForm" process="@this"/>
+                <p:commandButton value="Eliminar" action="#{estadoBean.eliminar(est.id)}" update=":estadoForm" process="@this"/>
             </p:column>
         </p:dataTable>
     </h:form>
