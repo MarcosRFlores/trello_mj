@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title>Mi Aplicación</title>
+    <h:outputStylesheet library="css" name="styles.css"/>
+</h:head>
+
+<h:body>
+    <h:form id="toolbarForm">
+        <p:toolbar>
+            <p:toolbarGroup>
+                <p:commandButton value="Tablero" icon="pi pi-th-large" action="tablero?faces-redirect=true" styleClass="menu-btn"/>
+                <p:commandButton value="Tareas" icon="pi pi-list" action="tareas?faces-redirect=true" styleClass="menu-btn"/>
+            </p:toolbarGroup>
+
+            <p:toolbarGroup align="right">
+                <p:menuButton icon="pi pi-user" styleClass="perfil-btn">
+                    <p:menuitem value="Perfil" icon="pi pi-id-card" />
+                    <p:menuitem value="Cerrar Sesión" icon="pi pi-power-off" action="#{usuarioBean.logout}"/>
+                </p:menuButton>
+            </p:toolbarGroup>
+        </p:toolbar>
+    </h:form>
+
+    <ui:insert name="content" />
+</h:body>
+</html>

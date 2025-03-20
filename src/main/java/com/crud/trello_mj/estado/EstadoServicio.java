@@ -2,6 +2,9 @@ package com.crud.trello_mj.estado;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.List;
 
 @Stateless

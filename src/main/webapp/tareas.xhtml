@@ -1,0 +1,46 @@
+<ui:composition template="layout/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:define name="content">
+        <h:form id="tareasForm">
+            <p:panel header="Gestión de Tareas">
+                <p:messages id="messages" showDetail="true" closable="true"/>
+
+                <h:panelGrid>
+                    <h:outputLabel for="titulo" value="Titulo:"/>
+                    <p:inputText id="titulo" value="#{tareaBean.tarea.titulo}" required="true"/>
+
+                    <h:outputLabel for="descripcion" value="Descripcion:"/>
+                    <p:inputText id="descripcion" value="#{tareaBean.tarea.descripcion}" required="true"/>
+
+                    <!--
+                        aqui debe ir el selecto de estado (pendiente, en curso, finalizado) con los valores (id1, id2, id3)
+                    -->
+
+                    <!--
+                        Luego para terminar de registrar una tarea se debe asociar el cliente
+                        entonces esto hacemos: tareaBean.tarea.cliente = clienteBean.cliente (?
+                    -->
+                </h:panelGrid>
+
+                <p:commandButton value="Guardar" action="#{tareaBean.guardar}" update="@form"/>
+            </p:panel>
+
+            <p:dataTable value="#{tareasBean.listaTareas}" var="tarea">
+                <p:column headerText="ID">
+                    <h:outputText value="#{tarea.id}" />
+                </p:column>
+                <p:column headerText="Descripción">
+                    <h:outputText value="#{tarea.descripcion}" />
+                </p:column>
+                <p:column headerText="Acciones">
+                    <p:commandButton value="Editar" action="#{tareasBean.cargarTarea(tarea.id)}" update="tareasForm"/>
+                    <p:commandButton value="Eliminar" action="#{tareasBean.eliminar(tarea.id)}" update="tareasForm"/>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>
