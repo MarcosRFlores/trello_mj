@@ -15,7 +15,7 @@
             <h:outputLabel for="nombre" value="Nombre:"/>
             <h:inputText id="nombre" value="#{estadoBean.estado.nombre}" required="true"/>
 
-            <h:commandButton value="Guardar" action="#{estadoBean.guardar}" update=":estadoForm"/>
+            <h:commandButton value="Guardar" action="#{estadoBean.guardar}" update=":estadoForm" process="@this"/>
         </h:panelGrid>
 
         <h2>Lista de Estados</h2>
@@ -27,8 +27,8 @@
                 <h:outputText value="#{est.nombre}"/>
             </p:column>
             <p:column headerText="Acciones">
-                <h:commandButton value="Editar" action="#{estadoBean.cargarEstado(est.id)}" process="@this" update="estadoForm" />
-                <h:commandButton value="Eliminar" action="#{estadoBean.eliminar(est.id)}" process="@this" update="estadoForm"/>
+                <h:commandButton value="Editar" action="#{estadoBean.cargarEstado(est.id)}" process="@this" update="@form" />
+                <h:commandButton value="Eliminar" action="#{estadoBean.eliminar(est.id)}" process="@this" update=":estadoForm"/>
             </p:column>
         </p:dataTable>
     </h:form>
