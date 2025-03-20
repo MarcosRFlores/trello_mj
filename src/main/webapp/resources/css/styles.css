@@ -1,0 +1,20 @@
+.menu-btn {
+    margin-right: 10px;
+    background-color: #007ad9 !important;
+    color: white !important;
+    border: none;
+}
+
+.menu-btn:hover {
+    background-color: #005bb5 !important;
+}
+
+.perfil-btn {
+    background-color: transparent !important;
+    border: none;
+    color: #333 !important;
+}
+
+.perfil-btn .ui-menuitem-text {
+    padding: 5px 10px;
+}
