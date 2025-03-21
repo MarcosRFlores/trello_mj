@@ -68,10 +68,10 @@ public class UsuarioBean implements Serializable { // Implementar Serializable
         if (usuarioAutenticado != null) {
             usuario = usuarioAutenticado; // Guardar el usuario en la sesión
             FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("usuario", usuario);
-            return "dashboard?faces-redirect=true"; // Redirigir al dashboard
+            return "/tablero.xhtml?faces-redirect=true"; // Redirigir al tablero
         } else {
             FacesContext.getCurrentInstance().addMessage(null,
-                    new FacesMessage("Credenciales incorrectas"));
+                    new FacesMessage("Credenciales incorrectas :("));
             return null; // Mostrar mensaje de error
         }
     }
