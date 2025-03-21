@@ -1,11 +1,18 @@
 package com.crud.trello_mj.tarea;
 
+import com.crud.trello_mj.usuario.Usuario;
+
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Named
@@ -15,14 +22,27 @@ public class TareaBean implements Serializable {
 
     private Tarea tarea;
     private List<Tarea> tareas;
+    private Usuario usuario;
 
     @Inject
     private TareaServicio tareaServicio;
 
     @PostConstruct
     public void init() {
-        tarea = new Tarea();
-        tareas = tareaServicio.listarTodos();
+        FacesContext context = FacesContext.getCurrentInstance();
+
+        usuario = (Usuario) context.getExternalContext().getSessionMap().get("usuario");
+
+        if (usuario == null) {
+            try {
+                context.getExternalContext().redirect("login.xhtml");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            tarea = new Tarea();
+            cargarTareasPorId();
+        }
     }
 
     //Getters and Setters
@@ -44,9 +64,15 @@ public class TareaBean implements Serializable {
     // Fin getters and setters
 
     public void guardar(){
-        tareaServicio.guardar(tarea);
-        tareas = tareaServicio.listarTodos();
-        tarea = new Tarea();
+        if (usuario != null) {
+            tarea.setUsuario(usuario); // Asigna el usuario logueado a la tarea
+            tareaServicio.guardar(tarea);
+            cargarTareasPorId();
+            tarea = new Tarea();
+        } else {
+            FacesContext.getCurrentInstance().addMessage(null,
+                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Usuario no autenticado"));
+        }
     }
 
     public void eliminar(Long id){
@@ -59,5 +85,10 @@ public class TareaBean implements Serializable {
         if(tareaEncontrada != null){
             this.tarea = tareaEncontrada;
         }
+    }
+
+    public void cargarTareasPorId(){
+        tareas = tareaServicio.listarTodos();
+        Collections.sort(tareas, (t1, t2) -> t1.getId().compareTo(t2.getId()));
     }
 }
