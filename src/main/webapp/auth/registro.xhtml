@@ -22,5 +22,12 @@
 
         <h:messages globalOnly="true" style="color: green;" />
     </h:form>
+
+    <!-- Verificar sesión activa -->
+    <h:outputScript>
+        if (#{usuarioBean.loggedIn}) {
+        window.location.href = "#{request.contextPath}/protegido/tablero.xhtml";
+        }
+    </h:outputScript>
 </h:body>
 </html>
