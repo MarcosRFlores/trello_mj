@@ -34,6 +34,10 @@ public class UsuarioServicio {
         return null; // Autenticación fallida
     }
 
+    public void actualizarUsuario(Usuario usuario) {
+        usuarioRepositorio.actualizarUsuario(usuario);
+    }
+
     // Buscar un usuario por su email
     public Usuario buscarPorEmail(String email) {
         return usuarioRepositorio.buscarPorEmail(email);

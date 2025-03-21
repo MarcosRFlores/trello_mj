@@ -38,4 +38,8 @@ public class UsuarioRepositorio {
         TypedQuery<Usuario> query = em.createQuery("SELECT u FROM Usuario u", Usuario.class);
         return query.getResultList();
     }
+
+    public void actualizarUsuario(Usuario usuario) {
+        em.merge(usuario);
+    }
 }

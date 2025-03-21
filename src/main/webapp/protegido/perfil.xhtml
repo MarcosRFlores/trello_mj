@@ -1,0 +1,24 @@
+<ui:composition template="../layout/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:define name="content">
+        <h:form>
+            <p:panel header="Mi Perfil" style="width: 400px; margin: 0 auto;">
+                <!-- Mostrar información del usuario -->
+                <h:panelGrid columns="2" style="margin-bottom: 20px;">
+                    <h:outputLabel value="Nombre:" style="font-weight: bold;" />
+                    <h:outputText value="#{usuarioBean.usuario.nombre}" />
+
+                    <h:outputLabel value="Email:" style="font-weight: bold;" />
+                    <h:outputText value="#{usuarioBean.usuario.email}" />
+                </h:panelGrid>
+
+                <!-- Botón para redirigir a la vista de cambio de contraseña -->
+                <p:commandButton value="Cambiar Contraseña" action="cambiarContrasena?faces-redirect=true" icon="pi pi-key" style="width: 100%;" />
+            </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>

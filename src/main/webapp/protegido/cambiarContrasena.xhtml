@@ -1,0 +1,39 @@
+<ui:composition template="../layout/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:define name="content">
+        <h:form style="max-width: 400px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
+            <h2 style="text-align: center; margin-bottom: 20px;">Cambiar Contraseña</h2>
+
+            <!-- Contraseña actual -->
+            <h:panelGrid columns="1" style="margin-bottom: 15px;">
+                <h:outputLabel for="contrasenaActual" value="Contraseña Actual:" style="font-weight: bold;" />
+                <p:password id="contrasenaActual" value="#{usuarioBean.contrasenaActual}" required="true" feedback="false" style="width: 100%;" />
+            </h:panelGrid>
+
+            <!-- Nueva contraseña -->
+            <h:panelGrid columns="1" style="margin-bottom: 15px;">
+                <h:outputLabel for="nuevaContrasena" value="Nueva Contraseña:" style="font-weight: bold;" />
+                <p:password id="nuevaContrasena" value="#{usuarioBean.nuevaContrasena}" required="true" feedback="false" style="width: 100%;" />
+            </h:panelGrid>
+
+            <!-- Confirmar nueva contraseña -->
+            <h:panelGrid columns="1" style="margin-bottom: 20px;">
+                <h:outputLabel for="confirmarContrasena" value="Confirmar Nueva Contraseña:" style="font-weight: bold;" />
+                <p:password id="confirmarContrasena" value="#{usuarioBean.confirmarContrasena}" required="true" feedback="false" style="width: 100%;" />
+            </h:panelGrid>
+
+            <!-- Botones del formulario -->
+            <h:panelGrid columns="2" style="width: 100%; text-align: center;">
+                <p:commandButton value="Guardar" action="#{usuarioBean.cambiarContrasena}" update="@form" style="width: 100px;" />
+                <p:commandButton value="Cancelar" action="perfil?faces-redirect=true" immediate="true" style="width: 100px;" />
+            </h:panelGrid>
+
+            <!-- Mensajes de error -->
+            <h:messages globalOnly="true" style="color: red; margin-top: 20px; text-align: center;" />
+        </h:form>
+    </ui:define>
+</ui:composition>

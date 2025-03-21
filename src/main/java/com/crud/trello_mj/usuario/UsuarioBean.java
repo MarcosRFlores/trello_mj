@@ -1,6 +1,7 @@
 package com.crud.trello_mj.usuario;
 
 import com.crud.trello_mj.exception.UsuarioExistenteException;
+import com.crud.trello_mj.util.PasswordUtil;
 
 
 import javax.faces.application.FacesMessage;
@@ -21,31 +22,9 @@ public class UsuarioBean implements Serializable {
     private Usuario usuario = new Usuario();
     private String email;
     private String contrasena;
-
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
+    private String contrasenaActual;
+    private String nuevaContrasena;
+    private String confirmarContrasena;
 
 
     public String registrar() {
@@ -79,11 +58,82 @@ public class UsuarioBean implements Serializable {
 
     public String logout() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-        return "login?faces-redirect=true"; // Redirigir al login
+        return "/auth/login?faces-redirect=true";
     }
 
     public boolean isLoggedIn() {
         return FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario") != null;
     }
+    public String cambiarContrasena() {
+        FacesContext context = FacesContext.getCurrentInstance();
+
+        // Validar que la contraseña actual sea correcta
+        if (!PasswordUtil.checkPassword(contrasenaActual, usuario.getContrasena())) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: La contraseña actual es incorrecta", null));
+            return null; // No redirigir, mostrar mensaje de error
+        }
+
+        // Validar que la nueva contraseña y la confirmación coincidan
+        if (!nuevaContrasena.equals(confirmarContrasena)) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: Las contraseñas no coinciden", null));
+            return null; // No redirigir, mostrar mensaje de error
+        }
+
+        // Cambiar la contraseña
+        String encryptedPassword = PasswordUtil.encryptPassword(nuevaContrasena);
+        usuario.setContrasena(encryptedPassword);
+        usuarioServicio.actualizarUsuario(usuario);
+
+        // Limpiar los campos
+        contrasenaActual = null;
+        nuevaContrasena = null;
+        confirmarContrasena = null;
+
+        // Mostrar mensaje de éxito
+        context.addMessage(null, new FacesMessage("Contraseña cambiada exitosamente"));
+
+        // Redirigir al perfil después de cambiar la contraseña
+        return "perfil?faces-redirect=true";
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getContrasenaActual() {return contrasenaActual;}
+
+    public void setContrasenaActual(String contrasenaActual) {this.contrasenaActual = contrasenaActual;}
+
+    // Getter y Setter para nuevaContrasena
+    public String getNuevaContrasena() {return nuevaContrasena;}
+
+    public void setNuevaContrasena(String nuevaContrasena) {this.nuevaContrasena = nuevaContrasena;}
+
+    // Getter y Setter para confirmarContrasena
+    public String getConfirmarContrasena() { return confirmarContrasena;}
+
+    public void setConfirmarContrasena(String confirmarContrasena) {this.confirmarContrasena = confirmarContrasena;}
+
+
 
 }
