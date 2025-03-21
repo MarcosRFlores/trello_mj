@@ -47,4 +47,8 @@ public class EstadoBean implements Serializable {
             this.estado = estadoEncontrado;
         }
     }
+
+    public EstadoServicio getEstadoServicio() {
+        return estadoServicio;
+    }
 }
