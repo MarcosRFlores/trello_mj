@@ -19,6 +19,10 @@ public class UsuarioServicio {
         if (usuarioExistente != null) {
             throw new UsuarioExistenteException("El email ya está registrado");
         }
+        String Contrasena = usuario.getContrasena();
+        if (Contrasena.length() < 8) {
+            throw new UsuarioExistenteException("La contraseña debe tener al menos 8 caracteres");
+        }
         // Encriptar la contraseña antes de guardarla
         String encryptedPassword = PasswordUtil.encryptPassword(usuario.getContrasena());
         usuario.setContrasena(encryptedPassword);
