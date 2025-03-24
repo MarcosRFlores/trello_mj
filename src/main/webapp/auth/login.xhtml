@@ -7,7 +7,10 @@
     <title>Login</title>
 </h:head>
 <h:body>
-    <h:form>
+
+    <h:form id="loginForm">
+        <!-- Mensajes de error -->
+        <p:messages globalOnly="true" style="color: red;" />
         <p:panel header="Login" style="width: 300px; margin: 50px auto;">
             <!-- PanelGrid con una columna para apilar labels y inputs -->
             <h:panelGrid columns="1" style="margin-bottom: 20px;">
@@ -21,11 +24,8 @@
             </h:panelGrid>
 
             <!-- Botones de acción -->
-            <p:commandButton value="Entrar" action="#{usuarioBean.login}" style="margin-right: 10px;" />
+            <p:commandButton value="Entrar" action="#{usuarioBean.login}" style="margin-right: 10px;" update="loginForm"/>
             <p:commandButton value="Registrarme" action="/auth/registro.xhtml?faces-redirect=true" immediate="true" />
-
-            <!-- Mensajes de error -->
-            <p:messages globalOnly="true" showDetail="true" style="color: red; margin-top: 10px;" />
         </p:panel>
     </h:form>
 
