@@ -15,22 +15,12 @@
 
                     <h:outputLabel for="descripcion" value="Descripcion:"/>
                     <p:inputText id="descripcion" value="#{tareaBean.tarea.descripcion}" required="true"/>
-
-                    <!--
-                        recurso: EstadoBean.listartodos as estado
-                        aqui debe ir el selecto de estado (pendiente, en curso, finalizado(estado.nombre)) con los valores (id1, id2, id3(estado.id))
-                    -->
+                    
                     <h:outputLabel for="estado" value="Estado:"/>
                     <p:selectOneMenu id="estado" value="#{tareaBean.tarea.estado}" required="true" converter="#{estadoConverter}">
                         <f:selectItems value="#{estadoBean.estados}" var="estado"
                                        itemLabel="#{estado.nombre}" itemValue="#{estado}"/>
                     </p:selectOneMenu>
-
-
-                    <!--
-                        Luego para terminar de registrar una tarea se debe asociar el cliente
-                        entonces esto hacemos: tareaBean.tarea.cliente = clienteBean.cliente (?
-                    -->
                 </h:panelGrid>
 
                 <p:commandButton value="Guardar" action="#{tareaBean.guardar}" update="@form"/>
