@@ -9,6 +9,7 @@ import java.util.List;
 
 @Stateless
 public class TareaRepositorio {
+
     @PersistenceContext(unitName = "jsf-crud-unit")
     private EntityManager entityManager;
 

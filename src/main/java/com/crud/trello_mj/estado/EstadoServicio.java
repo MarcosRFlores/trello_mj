@@ -7,10 +7,10 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
 
-@Stateless
+@ApplicationScoped
 public class EstadoServicio {
 
-    @EJB
+    @Inject
     private EstadoRepositorio estadoRepositorio;
 
     public void guardar(Estado estado) {

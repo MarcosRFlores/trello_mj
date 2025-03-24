@@ -2,11 +2,14 @@ package com.crud.trello_mj.tarea;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import java.util.List;
 
-@Stateless
+@ApplicationScoped
 public class TareaServicio {
-    @EJB
+
+    @Inject
     private TareaRepositorio tareaRepositorio;
 
     public void guardar(Tarea tarea) {
