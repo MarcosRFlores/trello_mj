@@ -51,7 +51,7 @@ public class UsuarioBean implements Serializable {
         } else {
             FacesContext.getCurrentInstance().addMessage(null,
                     new FacesMessage("Credenciales incorrectas :("));
-            return null; // Mostrar mensaje de error
+            return null;
         }
     }
 
@@ -67,32 +67,36 @@ public class UsuarioBean implements Serializable {
     public String cambiarContrasena() {
         FacesContext context = FacesContext.getCurrentInstance();
 
-        // Validar que la contraseña actual sea correcta
+
         if (!PasswordUtil.checkPassword(contrasenaActual, usuario.getContrasena())) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: La contraseña actual es incorrecta", null));
-            return null; // No redirigir, mostrar mensaje de error
+            return null;
         }
 
-        // Validar que la nueva contraseña y la confirmación coincidan
+
         if (!nuevaContrasena.equals(confirmarContrasena)) {
             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: Las contraseñas no coinciden", null));
-            return null; // No redirigir, mostrar mensaje de error
+            return null;
         }
 
-        // Cambiar la contraseña
+
+        if (nuevaContrasena.length() < 8) {
+            context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error: La contraseña debe tener al menos 8 caracteres", null));
+            return null;
+        }
+
         String encryptedPassword = PasswordUtil.encryptPassword(nuevaContrasena);
         usuario.setContrasena(encryptedPassword);
         usuarioServicio.actualizarUsuario(usuario);
 
-        // Limpiar los campos
+
         contrasenaActual = null;
         nuevaContrasena = null;
         confirmarContrasena = null;
 
-        // Mostrar mensaje de éxito
+
         context.addMessage(null, new FacesMessage("Contraseña cambiada exitosamente"));
 
-        // Redirigir al perfil después de cambiar la contraseña
         return "perfil?faces-redirect=true";
     }
 
