@@ -88,7 +88,7 @@ public class TareaBean implements Serializable {
     }
 
     public void cargarTareasPorId(){
-        tareas = tareaServicio.listarTodos();
+        tareas = tareaServicio.listarTodosPorId(usuario.getId());
         Collections.sort(tareas, (t1, t2) -> t1.getId().compareTo(t2.getId()));
     }
 }

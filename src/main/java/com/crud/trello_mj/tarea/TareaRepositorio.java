@@ -34,4 +34,12 @@ public class TareaRepositorio {
     public List<Tarea> listarTodos() {
         return entityManager.createQuery("SELECT t FROM Tarea t", Tarea.class).getResultList();
     }
+
+    public List<Tarea> listarTodosPorId(Long idUsuario) {
+        return entityManager.createQuery(
+                        "SELECT t FROM Tarea t WHERE t.usuario.id = :idUsuario", Tarea.class)
+                .setParameter("idUsuario", idUsuario)  // 🔹 Aquí pasamos el parámetro
+                .getResultList();
+    }
+
 }
