@@ -6,8 +6,43 @@
 
     <ui:define name="content">
         <h:form id="tableroForm">
-            <h2>Tablero de Actividades</h2>
-            <p>Contenido del módulo de Tablero...</p>
+            <h2>Tareas Pendientes:</h2>
+            <p:dataTable value="#{tableroBean.tareasPendientes}" var="tarea" allowUnsorting="true" sortMode="single">
+                <p:column headerText="Nombre" sortBy="#{tarea.titulo}">
+                    <h:outputText value="#{tarea.titulo}" />
+                </p:column>
+                <p:column headerText="Descripción" sortBy="#{tarea.descripcion}">
+                    <h:outputText value="#{tarea.descripcion}" />
+                </p:column>
+                <p:column headerText="Acciones">
+                    <p:commandButton value="Siguiente" action="#{tableroBean.cambiarEstado(tarea.id, 2)}" update=":tableroForm" process="@this"/>
+                </p:column>
+            </p:dataTable>
+            <h2>Tareas en Curso</h2>
+            <p:dataTable value="#{tableroBean.tareasEnCurso}" var="tarea" allowUnsorting="true" sortMode="single">
+                <p:column headerText="Nombre" sortBy="#{tarea.titulo}">
+                    <h:outputText value="#{tarea.titulo}" />
+                </p:column>
+                <p:column headerText="Descripción" sortBy="#{tarea.descripcion}">
+                    <h:outputText value="#{tarea.descripcion}" />
+                </p:column>
+                <p:column headerText="Acciones">
+                    <p:commandButton value="Anterior" action="#{tableroBean.cambiarEstado(tarea.id, 1)}" update=":tableroForm" process="@this"/>
+                    <p:commandButton value="Siguiente" action="#{tableroBean.cambiarEstado(tarea.id, 3)}" update=":tableroForm" process="@this"/>
+                </p:column>
+            </p:dataTable>
+            <h2>Tareas Finalizadas</h2>
+            <p:dataTable value="#{tableroBean.tareasFinalizadas}" var="tarea" allowUnsorting="true" sortMode="single">
+                <p:column headerText="Nombre" sortBy="#{tarea.titulo}">
+                    <h:outputText value="#{tarea.titulo}" />
+                </p:column>
+                <p:column headerText="Descripción" sortBy="#{tarea.descripcion}">
+                    <h:outputText value="#{tarea.descripcion}" />
+                </p:column>
+                <p:column headerText="Acciones">
+                    <p:commandButton value="Anterior" action="#{tableroBean.cambiarEstado(tarea.id, 2)}" update=":tableroForm" process="@this"/>
+                </p:column>
+            </p:dataTable>
         </h:form>
     </ui:define>
 </ui:composition>
