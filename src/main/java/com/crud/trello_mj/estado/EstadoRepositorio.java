@@ -1,6 +1,8 @@
 package com.crud.trello_mj.estado;
 
 import com.crud.trello_mj.estado.Estado;
+
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,6 +13,15 @@ public class EstadoRepositorio {
 
     @PersistenceContext(unitName = "jsf-crud-unit")
     private EntityManager entityManager;
+
+    @PostConstruct
+    public void init() {
+        if (listarTodos().isEmpty()) {
+            entityManager.persist(new Estado(null, "pendiente"));
+            entityManager.persist(new Estado(null, "en curso"));
+            entityManager.persist(new Estado(null, "finalizado"));
+        }
+    }
 
     public void crear(Estado estado) {
         entityManager.persist(estado);
