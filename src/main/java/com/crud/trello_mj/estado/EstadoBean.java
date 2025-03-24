@@ -1,14 +1,16 @@
 package com.crud.trello_mj.estado;
 
 import javax.annotation.PostConstruct;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
 
-@Named
-@ViewScoped
+@ManagedBean
+@SessionScoped
 public class EstadoBean implements Serializable {
 
     private static final long serialVersionUID = 1L; // Requerido para serialización
