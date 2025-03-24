@@ -1,5 +1,6 @@
 package com.crud.trello_mj.tarea;
 
+import com.crud.trello_mj.estado.Estado;
 import com.crud.trello_mj.usuario.Usuario;
 
 import javax.annotation.PostConstruct;
@@ -91,5 +92,13 @@ public class TareaBean implements Serializable {
 
     public void cargarTareasPorId(){
         tareas = tareaServicio.listarTodosPorId(usuario.getId());
+    }
+
+    public List<Tarea> listarPorUsuarioYEstado(long idUsuario, long idEstado) {
+        return tareaServicio.listarPorUsuarioYEstado(idUsuario, idEstado);
+    }
+
+    public void cambiarEstado(Long idTarea, Estado nuevoEstado){
+        tareaServicio.cambiarEstado(idTarea, nuevoEstado);
     }
 }
