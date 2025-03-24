@@ -1,5 +1,7 @@
 package com.crud.trello_mj.tarea;
 
+import com.crud.trello_mj.estado.Estado;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.enterprise.context.ApplicationScoped;
@@ -30,5 +32,17 @@ public class TareaServicio {
 
     public List<Tarea> listarTodosPorId(Long idUsuario) {
         return tareaRepositorio.listarTodosPorId(idUsuario);
+    }
+
+    public List<Tarea> listarPorUsuarioYEstado(long idUsuario, long idEstado) {
+        return tareaRepositorio.listarPorUsuarioYEstado(idUsuario, idEstado);
+    }
+
+    public void cambiarEstado(Long idTarea, Estado nuevoEstado){
+        Tarea tareaEncontrada = buscarPorId(idTarea);
+        if(tareaEncontrada != null){
+            tareaEncontrada.setEstado(nuevoEstado);
+            guardar(tareaEncontrada);
+        }
     }
 }
