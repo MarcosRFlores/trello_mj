@@ -43,4 +43,12 @@ public class TareaRepositorio {
                 .getResultList();
     }
 
+    public List<Tarea> listarPorUsuarioYEstado(Long usuarioId, Long estadoId) {
+        return entityManager.createQuery(
+                        "SELECT t FROM Tarea t WHERE t.usuario.id = :usuarioId AND t.estado.id = :estadoId", Tarea.class)
+                .setParameter("usuarioId", usuarioId)
+                .setParameter("estadoId", estadoId)
+                .getResultList();
+    }
+
 }
