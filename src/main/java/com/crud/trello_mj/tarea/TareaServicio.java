@@ -28,10 +28,6 @@ public class TareaServicio {
         return tareaRepositorio.buscarPorId(id);
     }
 
-    public List<Tarea> listarTodos() {
-        return tareaRepositorio.listarTodos();
-    }
-
     public List<Tarea> listarTodosPorId(Long idUsuario) {
         return tareaRepositorio.listarTodosPorId(idUsuario);
     }

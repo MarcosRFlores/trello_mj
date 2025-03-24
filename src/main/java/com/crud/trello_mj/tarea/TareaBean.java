@@ -79,7 +79,7 @@ public class TareaBean implements Serializable {
 
     public void eliminar(Long id){
         tareaServicio.eliminar(id);
-        tareas = tareaServicio.listarTodos();
+        tareas = tareaServicio.listarTodosPorId(usuario.getId());
     }
 
     public void cargarTarea(Long id){
