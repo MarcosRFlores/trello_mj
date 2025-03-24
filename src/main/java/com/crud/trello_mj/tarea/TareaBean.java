@@ -4,6 +4,8 @@ import com.crud.trello_mj.usuario.Usuario;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -15,8 +17,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-@Named
-@ViewScoped
+@ManagedBean
+@SessionScoped
 public class TareaBean implements Serializable {
     private static final long serialVersionUID = 1L;
 
