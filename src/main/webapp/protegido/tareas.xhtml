@@ -36,17 +36,17 @@
                 <p:commandButton value="Guardar" action="#{tareaBean.guardar}" update="@form"/>
             </p:panel>
 
-            <p:dataTable value="#{tareaBean.tareas}" var="tarea">
-                <p:column headerText="ID">
+            <p:dataTable value="#{tareaBean.tareas}" var="tarea" allowUnsorting="true" sortMode="single">
+                <p:column headerText="ID" sortBy="#{tarea.id}">
                     <h:outputText value="#{tarea.id}" />
                 </p:column>
-                <p:column headerText="Nombre">
+                <p:column headerText="Nombre" sortBy="#{tarea.titulo}">
                     <h:outputText value="#{tarea.titulo}" />
                 </p:column>
-                <p:column headerText="Descripción">
+                <p:column headerText="Descripción" sortBy="#{tarea.descripcion}">
                     <h:outputText value="#{tarea.descripcion}" />
                 </p:column>
-                <p:column headerText="Estado">
+                <p:column headerText="Estado" sortBy="#{tarea.estado.nombre}">
                     <h:outputText value="#{tarea.estado.nombre}" />
                 </p:column>
                 <p:column headerText="Acciones">
