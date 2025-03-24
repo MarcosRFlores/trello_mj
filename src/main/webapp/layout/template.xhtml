@@ -18,7 +18,7 @@
             </p:toolbarGroup>
 
             <p:toolbarGroup align="right">
-                <p:menuButton value="Mi Perfil" icon="pi pi-user" styleClass="perfil-btn">
+                <p:menuButton value="#{usuarioBean.usuario.nombre}" icon="pi pi-user" styleClass="perfil-btn">
                     <p:menuitem value="Perfil" icon="pi pi-id-card" action="perfil?faces-redirect=true" />
                     <p:menuitem value="Cerrar Sesión" icon="pi pi-power-off" action="#{usuarioBean.logout}"/>
                 </p:menuButton>

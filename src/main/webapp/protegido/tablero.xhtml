@@ -15,7 +15,7 @@
                     <h:outputText value="#{tarea.descripcion}" />
                 </p:column>
                 <p:column headerText="Acciones">
-                    <p:commandButton value="Siguiente" action="#{tableroBean.cambiarEstado(tarea.id, 2)}" update=":tableroForm" process="@this"/>
+                    <p:commandButton value="Siguiente" action="#{tableroBean.cambiarEstado(tarea.id, 2)}" update=":tableroForm" process="@this" styleClass="ui-menu"/>
                 </p:column>
             </p:dataTable>
             <h2>Tareas en Curso</h2>
@@ -27,8 +27,8 @@
                     <h:outputText value="#{tarea.descripcion}" />
                 </p:column>
                 <p:column headerText="Acciones">
-                    <p:commandButton value="Anterior" action="#{tableroBean.cambiarEstado(tarea.id, 1)}" update=":tableroForm" process="@this"/>
-                    <p:commandButton value="Siguiente" action="#{tableroBean.cambiarEstado(tarea.id, 3)}" update=":tableroForm" process="@this"/>
+                    <p:commandButton value="Anterior" action="#{tableroBean.cambiarEstado(tarea.id, 1)}" update=":tableroForm" process="@this" styleClass="ui-menu"/>
+                    <p:commandButton value="Siguiente" action="#{tableroBean.cambiarEstado(tarea.id, 3)}" update=":tableroForm" process="@this" styleClass="ui-menu"/>
                 </p:column>
             </p:dataTable>
             <h2>Tareas Finalizadas</h2>
@@ -40,7 +40,7 @@
                     <h:outputText value="#{tarea.descripcion}" />
                 </p:column>
                 <p:column headerText="Acciones">
-                    <p:commandButton value="Anterior" action="#{tableroBean.cambiarEstado(tarea.id, 2)}" update=":tableroForm" process="@this"/>
+                    <p:commandButton value="Anterior" action="#{tableroBean.cambiarEstado(tarea.id, 2)}" update=":tableroForm" process="@this" styleClass="ui-menu"/>
                 </p:column>
             </p:dataTable>
         </h:form>
