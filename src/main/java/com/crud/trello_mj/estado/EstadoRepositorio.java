@@ -17,9 +17,9 @@ public class EstadoRepositorio {
     @PostConstruct
     public void init() {
         if (listarTodos().isEmpty()) {
-            entityManager.persist(new Estado(null, "pendiente"));
-            entityManager.persist(new Estado(null, "en curso"));
-            entityManager.persist(new Estado(null, "finalizado"));
+            entityManager.persist(new Estado(null, "Pendiente"));
+            entityManager.persist(new Estado(null, "En curso"));
+            entityManager.persist(new Estado(null, "Finalizado"));
         }
     }
 

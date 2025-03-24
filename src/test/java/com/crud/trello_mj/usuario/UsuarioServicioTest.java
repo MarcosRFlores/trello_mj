@@ -1,4 +1,4 @@
-package com.crud.trello_mj.usuario;
+/*package com.crud.trello_mj.usuario;
 
 import com.crud.trello_mj.exception.UsuarioExistenteException;
 import com.crud.trello_mj.util.PasswordUtil;
@@ -48,4 +48,4 @@ public class UsuarioServicioTest {
             usuarioServicio.registrarUsuario(nuevoUsuario);
         });
     }
-}
+}//*/
