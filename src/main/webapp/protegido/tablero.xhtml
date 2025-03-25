@@ -5,44 +5,65 @@
                 xmlns:ui="http://java.sun.com/jsf/facelets">
 
     <ui:define name="content">
-        <h:form id="tableroForm">
-            <h2>Tareas Pendientes:</h2>
-            <p:dataTable value="#{tableroBean.tareasPendientes}" var="tarea" allowUnsorting="true" sortMode="single">
-                <p:column headerText="Nombre" sortBy="#{tarea.titulo}">
-                    <h:outputText value="#{tarea.titulo}" />
-                </p:column>
-                <p:column headerText="Descripción" sortBy="#{tarea.descripcion}">
-                    <h:outputText value="#{tarea.descripcion}" />
-                </p:column>
-                <p:column headerText="Acciones">
-                    <p:commandButton value="Siguiente" action="#{tableroBean.cambiarEstado(tarea.id, 2)}" update=":tableroForm" process="@this" styleClass="ui-menu"/>
-                </p:column>
-            </p:dataTable>
-            <h2>Tareas en Curso</h2>
-            <p:dataTable value="#{tableroBean.tareasEnCurso}" var="tarea" allowUnsorting="true" sortMode="single">
-                <p:column headerText="Nombre" sortBy="#{tarea.titulo}">
-                    <h:outputText value="#{tarea.titulo}" />
-                </p:column>
-                <p:column headerText="Descripción" sortBy="#{tarea.descripcion}">
-                    <h:outputText value="#{tarea.descripcion}" />
-                </p:column>
-                <p:column headerText="Acciones">
-                    <p:commandButton value="Anterior" action="#{tableroBean.cambiarEstado(tarea.id, 1)}" update=":tableroForm" process="@this" styleClass="ui-menu"/>
-                    <p:commandButton value="Siguiente" action="#{tableroBean.cambiarEstado(tarea.id, 3)}" update=":tableroForm" process="@this" styleClass="ui-menu"/>
-                </p:column>
-            </p:dataTable>
-            <h2>Tareas Finalizadas</h2>
-            <p:dataTable value="#{tableroBean.tareasFinalizadas}" var="tarea" allowUnsorting="true" sortMode="single">
-                <p:column headerText="Nombre" sortBy="#{tarea.titulo}">
-                    <h:outputText value="#{tarea.titulo}" />
-                </p:column>
-                <p:column headerText="Descripción" sortBy="#{tarea.descripcion}">
-                    <h:outputText value="#{tarea.descripcion}" />
-                </p:column>
-                <p:column headerText="Acciones">
-                    <p:commandButton value="Anterior" action="#{tableroBean.cambiarEstado(tarea.id, 2)}" update=":tableroForm" process="@this" styleClass="ui-menu"/>
-                </p:column>
-            </p:dataTable>
+        <h:form id="tableroForm" style="margin-top: 20px;">
+            <div style="display: flex; justify-content: space-between; gap: 10px;">
+
+                <!-- Tareas Pendientes -->
+                <div style="flex: 1; background: #2D2D2D; color: white; padding: 10px; border-radius: 8px;">
+                    <h1 style="text-align: center;">Tareas Pendientes</h1>
+                    <ui:repeat value="#{tableroBean.tareasPendientes}" var="tarea">
+                        <p:panel style="margin-bottom: 10px; padding: 10px; background: #c5c2c2; color: white;">
+                            <h:panelGrid columns="2" style="width: 100%; align-items: center;">
+                                <h:panelGroup layout="block">
+                                    <h:outputText value="#{tarea.titulo}" style="font-weight: bold; display: block;" />
+                                    <h:outputText value="#{tarea.descripcion}" />
+                                </h:panelGroup>
+                                <p:commandButton value="➡" action="#{tableroBean.cambiarEstado(tarea.id, 2)}"
+                                                 update=":tableroForm" style="float: right; text-align: right; border: 2px solid black;" />
+                            </h:panelGrid>
+                        </p:panel>
+                    </ui:repeat>
+                </div>
+
+                <!-- Tareas en Curso -->
+                <div style="flex: 1; background: #2D2D2D; color: white; padding: 10px; border-radius: 8px;">
+                    <h1 style="text-align: center;">Tareas en Curso</h1>
+                    <ui:repeat value="#{tableroBean.tareasEnCurso}" var="tarea">
+                        <p:panel style="margin-bottom: 10px; padding: 10px; background: #c5c2c2; color: white;">
+                            <h:panelGrid columns="2" style="width: 100%; align-items: center;">
+                                <h:panelGroup layout="block">
+                                    <h:outputText value="#{tarea.titulo}" style="font-weight: bold; display: block;" />
+                                    <h:outputText value="#{tarea.descripcion}" />
+                                </h:panelGroup>
+                                <h:panelGroup>
+                                    <p:commandButton value="⬅" action="#{tableroBean.cambiarEstado(tarea.id, 1)}"
+                                                     update=":tableroForm" style="margin-right: 5px; border: 2px solid black;" />
+                                    <p:commandButton value="➡" action="#{tableroBean.cambiarEstado(tarea.id, 3)}"
+                                                     update=":tableroForm" style="margin-right: 5px; border: 2px solid black;"/>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                        </p:panel>
+                    </ui:repeat>
+                </div>
+
+                <!-- Tareas Finalizadas -->
+                <div style="flex: 1; background: #2D2D2D; color: white; padding: 10px; border-radius: 8px;">
+                    <h1 style="text-align: center;">Tareas Finalizadas</h1>
+                    <ui:repeat value="#{tableroBean.tareasFinalizadas}" var="tarea">
+                        <p:panel style="margin-bottom: 10px; padding: 10px; background: #c5c2c2; color: white;">
+                            <h:panelGrid columns="2" style="width: 100%; align-items: center;">
+                                <h:panelGroup layout="block">
+                                    <h:outputText value="#{tarea.titulo}" style="font-weight: bold; display: block;" />
+                                    <h:outputText value="#{tarea.descripcion}" />
+                                </h:panelGroup>
+                                <p:commandButton value="⬅" action="#{tableroBean.cambiarEstado(tarea.id, 2)}"
+                                                 update=":tableroForm" style="float: right; border: 2px solid black;" />
+                            </h:panelGrid>
+                        </p:panel>
+                    </ui:repeat>
+                </div>
+
+            </div>
         </h:form>
     </ui:define>
 </ui:composition>
