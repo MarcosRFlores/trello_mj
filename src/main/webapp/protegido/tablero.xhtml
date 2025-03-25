@@ -35,12 +35,13 @@
                                     <h:outputText value="#{tarea.titulo}" style="font-weight: bold; display: block;" />
                                     <h:outputText value="#{tarea.descripcion}" />
                                 </h:panelGroup>
-                                <h:panelGroup>
+                                <h:panelGroup layout="block" style="display: flex; justify-content: flex-end; gap: 5px;">
                                     <p:commandButton value="⬅" action="#{tableroBean.cambiarEstado(tarea.id, 1)}"
-                                                     update=":tableroForm" style="margin-right: 5px; border: 2px solid black;" />
+                                                     update=":tableroForm" style="border: 2px solid black;" />
                                     <p:commandButton value="➡" action="#{tableroBean.cambiarEstado(tarea.id, 3)}"
-                                                     update=":tableroForm" style="margin-right: 5px; border: 2px solid black;"/>
+                                                     update=":tableroForm" style="border: 2px solid black;"/>
                                 </h:panelGroup>
+
                             </h:panelGrid>
                         </p:panel>
                     </ui:repeat>
