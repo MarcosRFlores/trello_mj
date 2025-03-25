@@ -1,3 +1,12 @@
+body {
+    background: #1e1e1e; /* Fondo oscuro acorde al tema */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
 .login-container {
     width: 400px;
     padding: 30px;
