@@ -7,6 +7,19 @@
     <welcome-file-list>
         <welcome-file>auth/login.xhtml</welcome-file>
     </welcome-file-list>
+    <context-param>
+        <param-name>primefaces.THEME</param-name>
+        <param-value>hot-sneaks</param-value>
+        <!--
+            Top Themas:
+            1️⃣ overcast : Tema limpio y moderno con tonos grises y un diseño profesional.
+            2️⃣ cupertino : Inspirado en macOS, tiene un estilo elegante con botones bien definidos.
+            3️⃣ hot-sneaks : Tema con colores vibrantes y buen contraste, ideal si quieres algo llamativo.
+            4️⃣ bluesky : Diseño ligero con tonos azulados, se ve fresco y agradable.
+            5️⃣ vader : Si prefieres dark mode, este es el más oscuro de la lista.
 
+            Obs: Para buscar mas ChatGpt le sabe
 
+        -->
+    </context-param>
 </web-app>
