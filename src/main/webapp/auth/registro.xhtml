@@ -19,15 +19,15 @@
             <!-- PanelGrid con una columna para apilar labels y inputs -->
             <h:panelGrid columns="1" style="width: 100%; margin-bottom: 20px;">
                 <!-- Label y campo para el nombre -->
-                <p:outputLabel for="nombre" value="Nombre:" />
+                <p:outputLabel for="nombre" value="Nombre:" style="color: white" />
                 <p:inputText id="nombre" value="#{usuarioBean.usuario.nombre}" style="width: 100%;" />
 
                 <!-- Label y campo para el email -->
-                <p:outputLabel for="email" value="Email:" />
+                <p:outputLabel for="email" value="Email:" style="color: white"/>
                 <p:inputText id="email" value="#{usuarioBean.usuario.email}" style="width: 100%;" />
 
                 <!-- Label y campo para la contraseña -->
-                <p:outputLabel for="contrasena" value="Contraseña:" />
+                <p:outputLabel for="contrasena" value="Contraseña:" style="color: white"/>
                 <p:password id="contrasena" value="#{usuarioBean.usuario.contrasena}" feedback="false" style="width: 100%;" />
             </h:panelGrid>
 
