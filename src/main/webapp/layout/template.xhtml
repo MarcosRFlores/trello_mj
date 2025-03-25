@@ -10,16 +10,16 @@
 
 <h:body>
     <h:form id="toolbarForm">
-        <p:toolbar>
+        <p:toolbar style="height: 70px; align-items: center; padding: 10px; display: flex">
             <p:toolbarGroup>
-                <p:commandButton value="Tablero" icon="pi pi-th-large" action="tablero?faces-redirect=true" styleClass="menu-btn"/>
-                <p:commandButton value="Tareas" icon="pi pi-list" action="tareas?faces-redirect=true" styleClass="menu-btn"/>
+                <p:commandButton value="Tablero" action="tablero?faces-redirect=true" style="color: #a8a7a7;background: transparent; border-color: transparent"/>
+                <p:commandButton value="Tareas" action="tareas?faces-redirect=true" style="color: #a8a7a7;background: transparent; border-color: transparent"/>
             </p:toolbarGroup>
 
-            <p:toolbarGroup align="right">
-                <p:menuButton value="#{usuarioBean.usuario.nombre}" icon="pi pi-user" styleClass="perfil-btn">
-                    <p:menuitem value="Perfil" icon="pi pi-id-card" action="perfil?faces-redirect=true" />
-                    <p:menuitem value="Cerrar Sesión" icon="pi pi-power-off" action="#{usuarioBean.logout}"/>
+            <p:toolbarGroup style="margin-left: auto">
+                <p:menuButton value="#{usuarioBean.usuario.nombre}">
+                    <p:menuitem value="Perfil" action="perfil?faces-redirect=true" />
+                    <p:menuitem value="Cerrar Sesión" action="#{usuarioBean.logout}"/>
                 </p:menuButton>
             </p:toolbarGroup>
         </p:toolbar>
