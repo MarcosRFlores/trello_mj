@@ -8,7 +8,7 @@
         <welcome-file>auth/login.xhtml</welcome-file>
     </welcome-file-list>
     <context-param>
-        <param-name>primefaces.THEME</param-name>
+         <param-name>primefaces.THEME</param-name>
         <param-value>hot-sneaks</param-value>
         <!--
             Top Themas:
