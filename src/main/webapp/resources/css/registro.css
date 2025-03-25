@@ -1,0 +1,38 @@
+body {
+    background: #1e1e1e; /* Fondo oscuro acorde al tema */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.registro-container {
+    width: 400px;
+    padding: 30px;
+    background: #2d2d2d;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.registro-header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+h:outputLabel, p:inputText, p:password {
+    color: white !important;
+}
+
+.registro-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.registro-buttons .ui-button {
+    width: 48%;
+}

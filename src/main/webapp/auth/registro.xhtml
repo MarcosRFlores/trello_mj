@@ -5,32 +5,38 @@
       xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title>Registro</title>
+    <!-- Referencia al archivo de CSS -->
+    <h:outputStylesheet name="css/registro.css" />
 </h:head>
-<h:body>
+<h:body style="background: #1e1e1e;display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
     <h:form id="registroForm">
-        <p:panel header="Registro" style="width: 300px; margin: 50px auto;">
+        <div class="registro-container">
+            <div class="registro-header">Registro de Usuario</div>
+
+            <!-- Mensajes de error -->
+            <p:messages globalOnly="true" style="color: red;" />
+
             <!-- PanelGrid con una columna para apilar labels y inputs -->
-            <h:panelGrid columns="1" style="margin-bottom: 20px;">
+            <h:panelGrid columns="1" style="width: 100%; margin-bottom: 20px;">
                 <!-- Label y campo para el nombre -->
                 <p:outputLabel for="nombre" value="Nombre:" />
-                <p:inputText id="nombre" value="#{usuarioBean.usuario.nombre}" required="true" style="width: 100%;" />
+                <p:inputText id="nombre" value="#{usuarioBean.usuario.nombre}" style="width: 100%;" />
 
                 <!-- Label y campo para el email -->
                 <p:outputLabel for="email" value="Email:" />
-                <p:inputText id="email" value="#{usuarioBean.usuario.email}" required="true" style="width: 100%;" />
+                <p:inputText id="email" value="#{usuarioBean.usuario.email}" style="width: 100%;" />
 
                 <!-- Label y campo para la contraseña -->
                 <p:outputLabel for="contrasena" value="Contraseña:" />
-                <p:password id="contrasena" value="#{usuarioBean.usuario.contrasena}" required="true" feedback="false" style="width: 100%;" />
+                <p:password id="contrasena" value="#{usuarioBean.usuario.contrasena}" feedback="false" style="width: 100%;" />
             </h:panelGrid>
 
             <!-- Botones de acción -->
-            <p:commandButton id="registroButton" value="Registrar" action="#{usuarioBean.registrar}" style="margin-right: 10px;" update="registroForm" />
-            <p:commandButton id= "volverLogin" value="Volver al Login" action="/auth/login.xhtml?faces-redirect=true" immediate="true" />
-
-            <!-- Mensajes de éxito o error -->
-            <h:messages globalOnly="true" style="color: red;" />
-        </p:panel>
+            <div class="registro-buttons">
+                <p:commandButton id="registroButton" value="Registrar" action="#{usuarioBean.registrar}" styleClass="ui-button-primary" />
+                <p:commandButton id="volverLogin" value="Volver al Login" action="/auth/login.xhtml?faces-redirect=true" immediate="true" styleClass="ui-button-secondary" />
+            </div>
+        </div>
     </h:form>
 
     <!-- Verificar sesión activa -->
