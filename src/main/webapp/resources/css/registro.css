@@ -23,10 +23,6 @@ body {
     margin-bottom: 20px;
 }
 
-h:outputLabel, p:inputText, p:password {
-    color: white !important;
-}
-
 .registro-buttons {
     display: flex;
     justify-content: space-between;
