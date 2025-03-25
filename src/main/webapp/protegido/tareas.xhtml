@@ -6,7 +6,7 @@
 
     <ui:define name="content">
         <h:form id="tareasForm">
-            <p:panel header="Gestión de Tareas">
+            <p:panel header="Gestión de Tareas" style="margin-top: 10px">
                 <p:messages id="messages" showDetail="true" closable="true"/>
 
                 <h:panelGrid>
@@ -26,7 +26,7 @@
                 <p:commandButton value="Guardar" action="#{tareaBean.guardar}" update="@form"/>
             </p:panel>
 
-            <p:dataTable value="#{tareaBean.tareas}" var="tarea" allowUnsorting="true" sortMode="single">
+            <p:dataTable value="#{tareaBean.tareas}" var="tarea" allowUnsorting="true" sortMode="single" style="margin-top: 10px">
                 <p:column headerText="ID" sortBy="#{tarea.id}">
                     <h:outputText value="#{tarea.id}" />
                 </p:column>
